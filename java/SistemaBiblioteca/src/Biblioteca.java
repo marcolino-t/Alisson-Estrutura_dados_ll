@@ -14,9 +14,9 @@ public class Biblioteca {
 
 }
     public void listarTodos(){
-        System.out.println("ID\tTitulo");
+        System.out.println("ID\tTitulo\t\t\tano\t\tautor");
         for (Livro livro : dados) {
-            String aux = livro.getId() + "\t" + livro.getTitulo();
+            String aux = livro.getId() + "\t" + livro.getTitulo() + "\t\t" + livro.getAno()   + "\t\t" + livro.getAutor();
             System.out.println(aux);
             
         }
@@ -26,6 +26,7 @@ public class Biblioteca {
     public Livro BuscaLivros(int id){
         for (Livro livro : dados) {
             if (livro.getId() == id){
+                System.out.println("Livro" + livro);
                 return livro;}
             }  
             System.out.println("Não encontrado");
