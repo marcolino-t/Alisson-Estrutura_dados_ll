@@ -18,6 +18,7 @@ public class ConectaDB {
         } catch (Exception e) {
             // TODO: handle exception
             System.out.println("Error: " + e.getMessage());
+            System.out.println("Drive não encontrado");
         }
     }
 
