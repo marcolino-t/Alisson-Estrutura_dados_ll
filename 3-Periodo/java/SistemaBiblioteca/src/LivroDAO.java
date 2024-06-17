@@ -1,4 +1,6 @@
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.LinkedList;
 
 public class LivroDAO {
     public void inserir(Livro livro){
@@ -18,7 +20,37 @@ public class LivroDAO {
             System.out.println("Falha na inserção: " + e.getMessage());
             
             
+        }
+
     }
-    
+
+    public LinkedList<Livro> consultarTodos(){
+        ConectaDB conexao = new ConectaDB();
+        String sql = "SELECT * FROM livro";
+        LinkedList<Livro> lista = new LinkedList<Livro>();
+        try{
+            PreparedStatement pst = conexao.getConexaoDB().prepareStatement(sql);
+            //executar consulta
+            ResultSet resultados = pst.executeQuery();
+            //percorrer resultados
+            while (resultados.next()) {
+                //recuperar dados
+                String titulo = resultados.getString("titulo");
+                String autor = resultados.getString("autor");
+                String ano = resultados.getString("ano");
+                //criar objeto java
+                Livro obj = new Livro(titulo);
+                obj.setAutor(autor);
+                obj.setAno(ano);
+                // adiciona na lista
+                lista.add(obj);
+            }
+            
+        }catch (Exception e){
+            System.out.println("Falha na consulta: " + e.getMessage());
+        }
+        return null;
+        
+    }
 }
-}
+
