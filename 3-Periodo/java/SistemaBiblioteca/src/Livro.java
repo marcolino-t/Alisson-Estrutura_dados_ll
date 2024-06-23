@@ -3,13 +3,13 @@ public class Livro {
     private  String titulo;
     private String autor;
     private String ano;
-    private static int contador = 0;
+    //private static int contador = 0;
 
     //CONSTRUTOR
     public Livro(String titulo){
         this.setTitulo(titulo);
-        contador += 1;
-        this.setId(contador);
+        //contador += 1;
+        //this.setId(contador);
 
     }
 
